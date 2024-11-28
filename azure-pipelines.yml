@@ -1,0 +1,20 @@
+trigger:
+  - main
+pool:
+  name: Default
+
+steps:
+  - task: UseDotNet@2
+    inputs:
+      packageType: sdk
+      version: 8.x
+  - script: dotnet build
+    displayName: 'Build the project'
+
+  - script: dotnet publish -o $(Build.ArtifactStagingDirectory)
+    displayName: 'Publish Artifacts'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: '$(Build.ArtifactStagingDirectory)'
+      artifactName: 'drop'

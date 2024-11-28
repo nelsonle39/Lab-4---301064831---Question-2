@@ -1,6 +1,12 @@
 @model IEnumerable<Lab3_301064831.Models.Product>
 
 <h1>Products</h1>
+
+<form method="get" asp-action="Index">
+    <input type="text" name="searchQuery" value="@ViewData["SearchQuery"]" placeholder="Search products" />
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
 <table>
     <thead>
         <tr>
@@ -20,4 +26,5 @@
         }
     </tbody>
 </table>
+
 <a asp-action="Create" class="btn btn-primary">Add New Product</a>

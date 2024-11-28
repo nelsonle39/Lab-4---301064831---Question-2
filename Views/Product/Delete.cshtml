@@ -1,0 +1,9 @@
+@model Lab3_301064831.Models.Product
+
+<h1>Delete @Model.Name</h1>
+<p>Price: @Model.Price</p>
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-primary">Cancel</a>
+</form>

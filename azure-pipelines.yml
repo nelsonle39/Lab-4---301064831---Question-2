@@ -1,12 +1,17 @@
 trigger:
   - main
+
 pool:
   name: Default
+
 steps:
   - task: UseDotNet@2
     inputs:
       packageType: sdk
       version: 8.x
+
+  - script: dir "$(Build.SourcesDirectory)"
+    displayName: 'List Repository Directory'
 
   - script: cd "$(Build.SourcesDirectory)/Lab 3/Lab 3 - 301064831"
     displayName: 'Change to Project Directory'

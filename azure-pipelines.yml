@@ -13,16 +13,13 @@ steps:
   - script: dir "$(Build.SourcesDirectory)"
     displayName: 'List Repository Directory'
 
-  - script: cd "$(Build.SourcesDirectory)/Lab 3/Lab 3 - 301064831"
-    displayName: 'Change to Project Directory'
-
-  - script: dotnet clean
+  - script: dotnet clean "$(Build.SourcesDirectory)/Lab 3 - 301064831.csproj"
     displayName: 'Clean the Project'
 
-  - script: dotnet build --configuration Release
+  - script: dotnet build "$(Build.SourcesDirectory)/Lab 3 - 301064831.csproj" --configuration Release
     displayName: 'Build the Project'
 
-  - script: dotnet publish --configuration Release -o $(Build.ArtifactStagingDirectory)
+  - script: dotnet publish "$(Build.SourcesDirectory)/Lab 3 - 301064831.csproj" --configuration Release -o $(Build.ArtifactStagingDirectory)
     displayName: 'Publish Artifacts'
 
   - task: PublishBuildArtifacts@1

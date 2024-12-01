@@ -2,16 +2,22 @@ trigger:
   - main
 pool:
   name: Default
-
 steps:
   - task: UseDotNet@2
     inputs:
       packageType: sdk
       version: 8.x
-  - script: dotnet build
-    displayName: 'Build the project'
 
-  - script: dotnet publish -o $(Build.ArtifactStagingDirectory)
+  - script: cd "$(Build.SourcesDirectory)/Lab 3/Lab 3 - 301064831"
+    displayName: 'Change to Project Directory'
+
+  - script: dotnet clean
+    displayName: 'Clean the Project'
+
+  - script: dotnet build --configuration Release
+    displayName: 'Build the Project'
+
+  - script: dotnet publish --configuration Release -o $(Build.ArtifactStagingDirectory)
     displayName: 'Publish Artifacts'
 
   - task: PublishBuildArtifacts@1

@@ -7,7 +7,6 @@ pool:
   name: Default
 
 stages:
-  # Build Stage
   - stage: Build
     jobs:
       - job: Build
@@ -53,6 +52,9 @@ stages:
                       Write-Host "Files in Current Directory:"
                       Get-ChildItem
 
-                      Write-Host "Running the .NET application..."
-                      dotnet "Lab_3_301064831.dll"
+                      Write-Host "Starting the .NET application in the background..."
+                      Start-Process -FilePath "dotnet" -ArgumentList "Lab 3 - 301064831.dll" -NoNewWindow -PassThru
+
+                      Write-Host "Application started successfully. Deployment complete."
+                      exit 0
                   displayName: 'Deploy and Run'
